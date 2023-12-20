@@ -6,7 +6,7 @@ const todoPackage = grpcObject.todoPackage;
 
 
 const server = new grpc.Server();
-server.bind("0.0.0.0:40000", grpc.ServerCredentials.createInsecure());
+server.bind("localhost:40000", grpc.ServerCredentials.createInsecure());
 server.addService(todoPackage.Todo.service,
     {
         "createTodo" : createTodo,
@@ -24,7 +24,7 @@ function createTodo(call , callback) {
     }
     todos.push(todoItem);
     callback(null,todoItem);
-    // console.log(call);
+     console.log(call);
 }
 
 function readTodosStream(call , callback){
